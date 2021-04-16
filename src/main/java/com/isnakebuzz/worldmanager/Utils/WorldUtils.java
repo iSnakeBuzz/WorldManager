@@ -93,6 +93,9 @@ public class WorldUtils {
         if (file.exists()) {
             return file.delete();
         }
+
+        worlds.removeWorld(worldName);
+
         return false;
     }
 }
