@@ -1,0 +1,10 @@
+name: WorldManager
+version: ${project.version}
+main: com.isnakebuzz.worldmanager.WorldManager
+authors: [ iSnakeBuzz_ ]
+description: A simple world manager for building servers.
+website: https://www.isnakebuzz.com/
+commands:
+  worldmanager:
+    aliases: [ 'wm', 'mv', 'swm', 'mw' ]
+    description: "Create worlds more easy than before"
