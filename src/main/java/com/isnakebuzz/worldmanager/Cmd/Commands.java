@@ -3,7 +3,6 @@ package com.isnakebuzz.worldmanager.Cmd;
 import com.google.common.collect.Maps;
 import com.isnakebuzz.worldmanager.Cmd.SubCommands.*;
 import com.isnakebuzz.worldmanager.WorldManager;
-import com.sun.org.apache.bcel.internal.generic.FLOAD;
 import lombok.SneakyThrows;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -26,6 +25,7 @@ public class Commands implements CommandExecutor {
         new load(plugin);
         new save(plugin);
         new unload(plugin);
+        new list(plugin);
     }
 
     @SneakyThrows
@@ -38,7 +38,7 @@ public class Commands implements CommandExecutor {
 
         if (cmd.getName().equalsIgnoreCase("worldmanager")) {
             if (args.length < 1) {
-                    sendHelpMSG(sender);
+                sendHelpMSG(sender);
                 return true;
             } else {
                 String subcmd = args[0].toLowerCase();
