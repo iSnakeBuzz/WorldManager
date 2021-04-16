@@ -1,6 +1,5 @@
 package com.isnakebuzz.worldmanager.Utils;
 
-import com.sun.istack.internal.Nullable;
 import org.bukkit.Bukkit;
 
 import static com.isnakebuzz.worldmanager.Utils.Statics.c;
@@ -30,7 +29,7 @@ public class Console {
             messageFactor("&eDEBUG", strings);
     }
 
-    private static void messageFactor(@Nullable String prefix, String... strings) {
+    private static void messageFactor(String prefix, String... strings) {
         StringBuilder s = new StringBuilder();
         for (String string : strings) {
             s.append(string).append(" ");
