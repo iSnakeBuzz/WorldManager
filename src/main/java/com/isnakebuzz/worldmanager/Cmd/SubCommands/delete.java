@@ -27,6 +27,13 @@ public class delete extends SubCommand {
 
         boolean success = plugin.getWorldUtils().deleteWorld(worldName);
 
+        sender.sendMessage(c(
+                success ?
+                        String.format("Successfully deleted %s.", worldName)
+                        :
+                        String.format("Error deleting %s.", worldName)
+        ));
+
         return false;
     }
 }

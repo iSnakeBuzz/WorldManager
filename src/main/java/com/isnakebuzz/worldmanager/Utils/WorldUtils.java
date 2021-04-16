@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.isnakebuzz.worldmanager.Config.Worlds;
 import com.isnakebuzz.worldmanager.WorldManager;
-import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
-import org.bukkit.WorldType;
+import org.bukkit.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +23,12 @@ public class WorldUtils {
     public void loadWorlds() {
         if (worldManager.getDataFolder().mkdir()) Console.log("Created WorldManager plugin data folder.");
         File worldsFile = new File(worldManager.getDataFolder(), "worlds.json");
-        if (!worldsFile.exists()) return;
+
+        // If the file do not exist, create a new object.
+        if (!worldsFile.exists()) {
+            this.worlds = new Worlds();
+            return;
+        }
 
         String worldsString = JsonConfig.readFile(worldsFile);
         worlds = gson.fromJson(worldsString, Worlds.class);
@@ -85,7 +87,12 @@ public class WorldUtils {
     }
 
     public boolean deleteWorld(String worldName) {
+        Bukkit.unloadWorld(worldName, false);
+        File file = new File(Bukkit.getWorldContainer(), worldName);
 
+        if (file.exists()) {
+            return file.delete();
+        }
         return false;
     }
 }
