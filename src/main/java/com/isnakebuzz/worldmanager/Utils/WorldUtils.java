@@ -33,6 +33,12 @@ public class WorldUtils {
         String worldsString = JsonConfig.readFile(worldsFile);
         worlds = gson.fromJson(worldsString, Worlds.class);
 
+        // Check again if it is null.
+        if (worlds == null) {
+            this.worlds = new Worlds();
+            return;
+        }
+
         for (String worldName : worlds.getWorlds()) {
             World world = createEmptyWorld(worldName);
 
