@@ -16,11 +16,11 @@ public class Worlds {
     }
 
     public void addWorld(World world) {
-        this.worlds.add(world.getName().toLowerCase());
+        this.worlds.add(world.getName());
     }
 
     public void removeWorld(String worldName) {
-        this.worlds.remove(worldName.toLowerCase());
+        this.worlds.remove(worldName);
     }
 
 }
