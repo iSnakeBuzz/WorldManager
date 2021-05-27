@@ -18,12 +18,8 @@ public final class WorldManager extends JavaPlugin {
     }
 
     @Override
-    public void onLoad() {
-        this.worldUtils.loadWorlds();
-    }
-
-    @Override
     public void onEnable() {
+        this.worldUtils.loadWorlds();
         this.getCommand("worldmanager").setExecutor(new Commands(this));
     }
 

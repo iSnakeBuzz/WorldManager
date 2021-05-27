@@ -40,15 +40,20 @@ public class WorldUtils {
         }
 
         for (String worldName : worlds.getWorlds()) {
-            World world = createEmptyWorld(worldName);
+            try {
+                World world = new WorldCreator(worldName).createWorld();
 
-            if (world == null) {
-                worlds.getWorlds().remove(worldName);
+                if (world == null) {
+                    worlds.getWorlds().remove(worldName);
+                    Console.error(String.format("Error loading %s", worldName));
+                    continue;
+                }
+
+                Console.log(String.format("Successfully loaded %s", worldName));
+            } catch (NullPointerException ex) {
                 Console.error(String.format("Error loading %s", worldName));
-                continue;
+                ex.printStackTrace();
             }
-
-            Console.log(String.format("Successfully loaded %s", worldName));
         }
     }
 
